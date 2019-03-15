@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    SignUp
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<form novalidate [formGroup]="signUpForm" #sform = "ngForm" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>
+    <p>
+      <mat-form-field  class = "half-width">
+        <input matInput formControlName="firstname" placeholder="Firstname" type="text"  required>
+        <mat-error *ngIf="signUpForm.get('firstname').hasError('required') && signUpForm.get('firstname').touched">First name is required</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field class = "half-width">
+          <input matInput placeholder="Lastname" type="text" formControlName="lastname"  required>
+          <mat-error *ngIf="signUpForm.get('lastname').hasError('required') && signUpForm.get('lastname').touched">Last name is required</mat-error>
+      </mat-form-field>
+    </p>
+    
+    <p>
+      <mat-form-field class = "half-width">
+        <input matInput placeholder="Email" type="text"  formControlName="email" required>
+        <mat-error *ngIf="signUpForm.get('email').hasError('required') && signUpForm.get('email').touched">Email is required</mat-error>
+        
+      </mat-form-field>
+      <mat-form-field class = "half-width">
+        <input matInput placeholder="Password" type="password"  formControlName="password"  required>
+        <mat-error *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched">Password is required</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button class="background-primary text-floral-white" >SignUp</button>
+  </mat-dialog-actions>
+</form>

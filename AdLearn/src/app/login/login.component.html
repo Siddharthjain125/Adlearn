@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    Login
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+
+<form novalidate [formGroup]="loginForm" #lform = "ngForm" (ngSubmit)="onSubmit()">
+
+  <mat-dialog-content>    
+    <p>
+      <mat-form-field class = "full-width">
+        <input matInput placeholder="Email" type="text"  formControlName="email" required>
+        <mat-error *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">Email is required</mat-error>
+        
+      </mat-form-field>
+      </p><p>
+      <mat-form-field class = "full-width">
+        <input matInput placeholder="Password" type="password"  formControlName="password"  required>
+        <mat-error *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">Password is required</mat-error>
+      </mat-form-field>
+    </p>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <span class="flex-spacer"></span>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button class="background-primary text-floral-white" >Login</button>
+  </mat-dialog-actions>
+</form>
